@@ -4,9 +4,9 @@ import java.awt.event.ActionListener;
 
 public class pro extends JFrame {
     private JTextField nam1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
+    private JTextField mail1;
+    private JTextField num1;
+    private JTextField loc1;
     private JButton proceedButton;
     private JPanel MainPanel;
 
@@ -18,9 +18,18 @@ public class pro extends JFrame {
         proceedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new mid().setVisible(true);
-               
-                dispose();
+                String ntf = nam1.getText().trim();
+                String mtf = mail1.getText().trim();
+                String numtf = num1.getText().trim();
+                String ltf = loc1.getText().trim();
+                if(ntf.isEmpty() || mtf.isEmpty() || numtf.isEmpty() || ltf.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "This field is required.");
+                }else{
+                    JOptionPane.showMessageDialog(pro.this, "Login successful!");
+
+                    new mid().setVisible(true);
+                    dispose();
+                }
             }
         });
     }
