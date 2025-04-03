@@ -36,11 +36,9 @@ public class last extends JFrame {
         generateButton = new JButton("Print Receipt");
         buttonPanel = new JPanel();
 
-        // Set monospaced font for proper alignment
         textArea1.setFont(new Font("Monospaced", Font.PLAIN, 14));
         textArea1.setEditable(false);
 
-        // Generate and display receipt
         String receiptContent = generateReceipt(name, accNum, paymentMethod,
                 service1, hours1, rate1,
                 service2, hours2, rate2,
@@ -52,7 +50,7 @@ public class last extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    // Print the receipt
+                   
                     boolean complete = textArea1.print();
                     if (complete) {
                         JOptionPane.showMessageDialog(last.this, "Receipt printed successfully!");
@@ -66,7 +64,6 @@ public class last extends JFrame {
             }
         });
 
-        // Layout adjustments
         JScrollPane scrollPane = new JScrollPane(textArea1);
         buttonPanel.add(generateButton);
 
@@ -81,11 +78,10 @@ public class last extends JFrame {
                                    String service2, String hours2, String rate2,
                                    String service3, String hours3, String rate3,
                                    String total) {
-        StringBuilder receipt = new StringBuilder();  // Using StringBuilder instead of JTextArea
+        StringBuilder receipt = new StringBuilder();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateTime = dateFormat.format(new Date());
 
-        // Header
         receipt.append(String.format("%40s\n\n", "OFFICIAL RECEIPT"));
         receipt.append(String.format("%-20s: %s\n", "Date", dateTime));
         receipt.append(String.format("%-20s: %s\n", "Customer Name", name));
@@ -96,12 +92,12 @@ public class last extends JFrame {
         receipt.append(String.format("%-25s %8s %10s %10s\n", "SERVICE", "HOURS", "RATE", "AMOUNT"));
         receipt.append(String.format("%50s\n", "").replace(' ', '-'));
 
-        // Service rows
+
         addServiceRow(receipt, service1, hours1, rate1);
         addServiceRow(receipt, service2, hours2, rate2);
         addServiceRow(receipt, service3, hours3, rate3);
 
-        // Footer
+
         receipt.append(String.format("%50s\n", "").replace(' ', '-'));
         receipt.append(String.format("%45s\n", total));
         receipt.append(String.format("%50s\n", "").replace(' ', '='));
