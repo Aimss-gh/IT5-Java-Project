@@ -18,10 +18,10 @@ public class pro extends JFrame {
         proceedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String ntf = nam1.getText().trim();
-                String mtf = mail1.getText().trim();
-                String numtf = num1.getText().trim();
-                String ltf = loc1.getText().trim();
+                String ntf = nam1.getText();
+                String mtf = mail1.getText();
+                String numtf = num1.getText();
+                String ltf = loc1.getText();
                 if(ntf.isEmpty() || mtf.isEmpty() || numtf.isEmpty() || ltf.isEmpty()){
                     JOptionPane.showMessageDialog(null, "This field is required.");
                 }else{
